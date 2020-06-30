@@ -13,3 +13,15 @@ sudo yum -y install nodejs
 
 ```
 
+
+> nestjs
+
+nest-project nestjs项目
+
+passport-service 登陆验证微服务
+
+redis-service redis微服务
+
+tcp-service 微服务
+
+upload-service 上传微服务
