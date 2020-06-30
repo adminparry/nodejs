@@ -18,10 +18,21 @@ sudo yum -y install nodejs
 
 nest-project nestjs项目
 
+https://github.com/adminparry/nodejs/tree/master/nest-project
+
+
 passport-service 登陆验证微服务
+
+https://github.com/adminparry/nodejs/tree/master/passport-service
 
 redis-service redis微服务
 
+https://github.com/adminparry/nodejs/tree/master/redis-service
+
 tcp-service 微服务
 
+https://github.com/adminparry/nodejs/tree/master/tcp-service
+
 upload-service 上传微服务
+
+https://github.com/adminparry/nodejs/tree/master/upload-service
