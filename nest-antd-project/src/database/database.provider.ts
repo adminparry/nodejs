@@ -1,6 +1,7 @@
 import { SEQUELIZE } from "src/constants/sequelize.constants";
 import { Sequelize } from "sequelize-typescript";
 import { Menu } from "src/entity/menu.entity";
+import { TableEntity } from "src/entity/table.entity";
 
 interface IfactoryProvider {
     provide: string;
@@ -18,6 +19,8 @@ export const databaseProvider = {
             database: 'antd',
         });
         sequelize.addModels([Menu]);
+        sequelize.addModels([TableEntity]);
+        
         await sequelize.sync();
         return sequelize;
     } 

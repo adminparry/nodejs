@@ -5,3 +5,6 @@ mkdir constants && cd constants && touch sequelize.constants.ts
 
 
 nest g module database 
+nest g module menu && nest g service menu && nest g controller menu
+nest g module table && nest g service table && nest g controller table
+

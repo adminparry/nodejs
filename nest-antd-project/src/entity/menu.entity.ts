@@ -1,7 +1,8 @@
 import { Table, Model, Column } from "sequelize-typescript";
 
 @Table({
-    tableName: 'menu'
+    tableName: 'menu',
+    comment: '树形菜单'
 })
 export class Menu extends Model<Menu> {
 
