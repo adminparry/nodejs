@@ -2,12 +2,13 @@ import { SEQUELIZE } from "src/constants/sequelize.constants";
 import { Sequelize } from "sequelize-typescript";
 import { Menu } from "src/entity/menu.entity";
 import { TableEntity } from "src/entity/table.entity";
+import { Line } from "src/entity/line.entity";
 
-interface IfactoryProvider {
+export interface IfactoryProvider {
     provide: string;
-    useFactory: Function
+    useFactory: any;
 }
-export const databaseProvider = {
+export const databaseProvider:IfactoryProvider = {
     provide: SEQUELIZE,
     useFactory: async () => {
         const sequelize = new Sequelize({
@@ -20,6 +21,7 @@ export const databaseProvider = {
         });
         sequelize.addModels([Menu]);
         sequelize.addModels([TableEntity]);
+        sequelize.addModels([Line]);
         
         await sequelize.sync();
         return sequelize;
