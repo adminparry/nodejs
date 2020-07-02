@@ -13,11 +13,11 @@ export class LineService {
 //     select SUM(t.value),SUBSTR(t.time,1,7) 
 //  from line t 
 //  WHERE  t.time 
-//  like '2020-0%' 
+//  like '2020%' 
 //  group by SUBSTR(t.time,1,7)
 
  
-    async findAll(year: number): Promise<Line[]>{
+    async findYear(year: number): Promise<Line[]>{
         return this.respository.findAll({
             attributes: [[Sequelize.fn('SUM', Sequelize.col('value')), 'value'],[Sequelize.fn('SUBSTR', Sequelize.col('time'), 1, 7),'time']],
             group: [Sequelize.fn('SUBSTR', Sequelize.col('time'), 1, 7)],
@@ -27,6 +27,14 @@ export class LineService {
                 }
                 
             }
+        });
+    }
+
+    async findFullYear(): Promise<Line[]>{
+        return this.respository.findAll({
+            attributes: [[Sequelize.fn('SUM', Sequelize.col('value')), 'value'],[Sequelize.fn('SUBSTR', Sequelize.col('time'), 1, 4),'time']],
+            group: [Sequelize.fn('SUBSTR', Sequelize.col('time'), 1, 4)],
+           
         });
     }
 }

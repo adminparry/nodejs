@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { LineService } from './line.service';
 
 @Controller('line')
@@ -7,7 +7,13 @@ export class LineController {
         private lineService : LineService
     ){}
     @Get()
-    async line(){
-        return this.lineService.findAll(2020);
+    async line(@Query('year') year){
+       
+        return this.lineService.findYear(year);
     }
+    @Get('pie')
+    async pie(){
+        return this.lineService.findFullYear();
+    }
+    
 }

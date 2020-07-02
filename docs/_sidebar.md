@@ -9,4 +9,5 @@
 * [频繁访问](./md/limit.md)
 * [微服务](./md/microservice.md)
 * [api文档](./md/swagger.md)
+* [验证码](./md/captcha.md)
 
