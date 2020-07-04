@@ -1,22 +1,31 @@
 import { Injectable } from '@nestjs/common';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
-import { LoginDto } from './auth.dto';
+import { passwordWrap } from 'src/common/utils/crypto';
 
 @Injectable()
 export class AuthService {
-    constructor(private usersService: UsersService, private jwtService: JwtService) { }
+    constructor(
+        private usersService: UsersService,
+        private jwtService: JwtService,
+    ) { }
 
     async validateUser(username: string, pass: string): Promise<any> {
         const user = await this.usersService.findOne(username);
-        if (user && user.password === pass) {
-            const { password, ...result } = user;
+        //  会加载到req对象中去了req.user
+
+        // @ts-ignore
+        if (user && user.password === passwordWrap(pass, user.salt)) {
+            // @ts-ignore
+            const { password,salt, ...result } = user.toJSON();
+
             return result;
         }
         return null;
     }
-    async login(user: LoginDto) {
-        const payload = { username: user.username, sub: user.userId };
+
+    async login(user: any) {
+        const payload = { user: user };
         return {
             access_token: this.jwtService.sign(payload),
         };

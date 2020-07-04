@@ -10,4 +10,6 @@
 * [微服务](./md/microservice.md)
 * [api文档](./md/swagger.md)
 * [验证码](./md/captcha.md)
+* [定时任务](./md/scheduling.md)
+* [循环依赖](./md/circular.md)
 
